@@ -1,0 +1,23 @@
+spring:
+  h2:
+    console:
+      enable: true
+
+  datasource:
+    url: jddbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    ussername: sa
+    password:
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hiberate:
+        format_sql: true
+        show_sql: true
+
+logging:
+  level:
+    me.jinhee: DEBUG

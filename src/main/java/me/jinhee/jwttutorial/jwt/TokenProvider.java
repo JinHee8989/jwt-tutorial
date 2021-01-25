@@ -56,7 +56,7 @@ public class TokenProvider implements InitializingBean {
         return Jwts.builder()
                 .setSubject(authentication.getName())
                 .claim(AUTHORITIES_KEY, authorities)
-                .signWith(key, SignatureAlgorithm.ES512)    //실행할 알고리즘. 여기선 ES512로 진행
+                .signWith(key, SignatureAlgorithm.HS512)    //실행할 알고리즘. 여기선 HS512로 진행
                 .setExpiration(validity)        //만료시간
                 .compact();
     }
@@ -66,7 +66,7 @@ public class TokenProvider implements InitializingBean {
         Claims claims = Jwts.parserBuilder()
                 .setSigningKey(key)
                 .build()
-                .parseClaimsJws(token)  //받은 토큰으로 클레이을 만들어줌
+                .parseClaimsJws(token)  //받은 토큰으로 클레임을 만들어줌
                 .getBody();
 
         Collection<? extends  GrantedAuthority> authorities =
